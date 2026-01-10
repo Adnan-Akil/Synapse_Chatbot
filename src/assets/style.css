@@ -1,0 +1,173 @@
+/* Premium Dark Glassmorphism Theme - V2.0 */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=JetBrains+Mono:wght@400&display=swap');
+
+/* --- Global Reset & Fonts --- */
+html, body, [class*="css"] {
+    font-family: 'Outfit', sans-serif;
+    color: #e0e0e0;
+}
+
+code, kbd, pre, samp {
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* --- Main App Background --- */
+.stApp {
+    background: radial-gradient(circle at 10% 20%, #0f0c29 0%, #302b63 45%, #24243e 100%);
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+/* Remove default top bar decoration if visible */
+header[data-testid="stHeader"] {
+    background: transparent;
+    backdrop-filter: blur(5px);
+}
+
+/* --- Sidebar Glass Panel --- */
+section[data-testid="stSidebar"] {
+    background-color: rgba(15, 12, 41, 0.7); /* Darker, semi-transparent */
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px);
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.3);
+}
+
+section[data-testid="stSidebar"] > div {
+    padding-top: 2rem;
+}
+
+/* --- Chat Messages (Floating Cards) --- */
+.stChatMessage {
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Top light highlight */
+    border-left: 1px solid rgba(255, 255, 255, 0.1); /* Left light highlight */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    margin-bottom: 1.5rem;
+}
+
+.stChatMessage:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* User Avatar Gradient */
+[data-testid="chatAvatarIcon-user"] {
+    background: linear-gradient(135deg, #FF61D2 0%, #FE9090 100%);
+    box-shadow: 0 0 10px rgba(255, 97, 210, 0.5);
+}
+
+/* Assistant Avatar Gradient */
+[data-testid="chatAvatarIcon-assistant"] {
+    background: linear-gradient(135deg, #4cc9f0 0%, #4361ee 100%);
+    box-shadow: 0 0 10px rgba(76, 201, 240, 0.5);
+}
+
+/* --- Floating Input Bar --- */
+/* This targets the bottom container */
+.stChatInputContainer {
+    padding-bottom: 2rem;
+    padding-top: 1rem;
+    background: transparent; /* Remove default white bg if any */
+}
+
+/* The actual text area wrapper */
+[data-testid="stChatInput"] {
+    background-color: rgba(20, 20, 35, 0.6) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 30px !important;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    color: white !important;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+[data-testid="stChatInput"]:focus-within {
+    border-color: #4cc9f0 !important;
+    box-shadow: 0 0 25px rgba(76, 201, 240, 0.25);
+}
+
+/* --- Buttons (Neon Glow) --- */
+.stButton > button {
+    background: linear-gradient(90deg, #4361ee 0%, #4cc9f0 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 0.6rem 1.2rem;
+    box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+    transition: all 0.2s ease;
+}
+
+.stButton > button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(76, 201, 240, 0.6);
+}
+
+.stButton > button:active {
+    transform: scale(0.98);
+}
+
+/* --- File Uploader --- */
+[data-testid="stFileUploader"] {
+    background-color: rgba(255, 255, 255, 0.02);
+    border: 1px dashed rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 1rem;
+}
+
+[data-testid="stFileUploader"] section {
+    background-color: transparent;
+}
+
+/* --- Typography --- */
+h1 {
+    font-weight: 800;
+    letter-spacing: -1px;
+    /* Gradient Text */
+    background: linear-gradient(to right, #ffffff 20%, #a5b4fc 80%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 30px rgba(67, 97, 238, 0.3);
+}
+
+h2, h3 {
+    color: #f0f0f0;
+}
+
+/* --- Scrollbar Customization --- */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* --- Animations --- */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.stChatMessage {
+    animation: fadeIn 0.4s ease-out forwards;
+}
