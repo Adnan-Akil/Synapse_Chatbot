@@ -1,9 +1,9 @@
 """Data loader module for handling various document types"""
 
-#import tempfile
+
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_chroma.vectorstores import Chroma
 from langchain_huggingface import HuggingFaceEmbeddings
 
@@ -13,7 +13,7 @@ embedding_model = HuggingFaceEmbeddings(
 
 splitter = RecursiveCharacterTextSplitter(chunk_size=1200, chunk_overlap=400)
 
-#temp_db = tempfile.mkdtemp()
+
 vector_store = Chroma(embedding_function=embedding_model, persist_directory=None)
 
 

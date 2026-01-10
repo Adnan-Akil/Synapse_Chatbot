@@ -1,0 +1,8 @@
+.env
+new_venv/
+venv/
+__pycache__/
+*.pyc
+settings.json
+*.pkl
+project_env

@@ -1,5 +1,9 @@
+langchain
 langchain_community
 langchain_chroma
+langchain_core
+langchain_classic
+langchain_text_splitters
 streamlit
 langchain_huggingface
 sentence-transformers
@@ -10,3 +14,5 @@ langchain-groq
 dotenv
 openpyxl
 pysqlite3-binary
+ruff
+mypy
