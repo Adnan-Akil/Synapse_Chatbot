@@ -1,18 +1,15 @@
 """LLM module for generating final answers based on retrieved documents"""
 
-import os
-
-from dotenv import load_dotenv
+from config.config import Config
 from langchain_groq import ChatGroq
 
-load_dotenv()
-groq_key = os.getenv("GROQ_API_KEY")
+from typing import List
+from langchain_core.documents import Document
 
-
-def final_answer(retrieved_docs, user_query):
+def final_answer(retrieved_docs: List[Document], user_query: str) -> str:
     """Generate a final answer using the retrieved documents and user query"""
     llm_model = ChatGroq(
-        model="meta-llama/llama-4-scout-17b-16e-instruct", temperature=0.3
+        model=Config.LLM_MODEL_NAME, temperature=0.3, api_key=Config.GROQ_API_KEY
     )
 
     prompt = f"""
@@ -49,5 +46,8 @@ def final_answer(retrieved_docs, user_query):
 
   """
 
-    llm_response = llm_model.invoke(prompt)
-    return llm_response.content
+    try:
+        llm_response = llm_model.invoke(prompt)
+        return llm_response.content
+    except Exception as e:
+        return f"Error connecting to LLM: {str(e)}. Please check your API key and internet connection."

@@ -1,20 +1,16 @@
 """Retrieval module for handling document retrieval and reranking"""
 
-import os
-
-from dotenv import load_dotenv
-from langchain.retrievers.document_compressors import CrossEncoderReranker
-from langchain.retrievers.multi_query import MultiQueryRetriever
+from config.config import Config
+from langchain_classic.retrievers.document_compressors.cross_encoder_rerank import CrossEncoderReranker
+from langchain_classic.retrievers.multi_query import MultiQueryRetriever
 from langchain_community.cross_encoders import HuggingFaceCrossEncoder
 from langchain_community.vectorstores import Chroma
 from langchain_groq import ChatGroq
 from langchain_huggingface import HuggingFaceEmbeddings
 
-#from file_parser import temp_db
 
-load_dotenv()
-groq_key = os.getenv("GROQ_API_KEY")
-llm_model = ChatGroq(model="meta-llama/llama-4-scout-17b-16e-instruct", temperature=0.3)
+
+llm_model = ChatGroq(model=Config.LLM_MODEL_NAME, temperature=0.3, api_key=Config.GROQ_API_KEY)
 
 embedding_model = HuggingFaceEmbeddings(
     model_name="sentence-transformers/all-MiniLM-L6-v2", model_kwargs={"device": "cpu"}
@@ -27,7 +23,10 @@ encoder_model = HuggingFaceCrossEncoder(
 reranker = CrossEncoderReranker(model=encoder_model, top_n=15)
 
 
-def retrieve_similar_docs(user_query_text: str):
+from typing import List
+from langchain_core.documents import Document
+
+def retrieve_similar_docs(user_query_text: str) -> List[Document]:
     """Retrieve and rerank similar documents based on the user query"""
     base_retriever = vectordb.as_retriever(
         search_type="mmr", search_kwargs={"k": 35, "fetch_k": 80, "lambda_mult": 0.3}

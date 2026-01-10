@@ -5,7 +5,7 @@ import tempfile
 
 import pandas as pd
 from docx import Document as docxLoader
-from langchain.docstore.document import Document as LangDoc
+from langchain_core.documents import Document as LangDoc
 from langchain_community.document_loaders import PyMuPDFLoader
 
 
