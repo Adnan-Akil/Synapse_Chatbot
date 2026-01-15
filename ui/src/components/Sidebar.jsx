@@ -37,7 +37,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={toggleSidebar}
-            className="absolute inset-0 bg-black/60 backdrop-blur-sm z-40"
+            className="absolute inset-0 bg-black/60 backdrop-blur-sm z-[60]"
           />
 
           {/* Drawer Panel (Right Side) */}
@@ -46,12 +46,12 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="absolute right-0 top-0 h-full w-full max-w-sm bg-zinc-950 border-l border-zinc-800 shadow-2xl z-50 flex flex-col"
+            className="absolute right-0 top-0 h-full w-full md:max-w-sm bg-zinc-950 border-l border-zinc-800 shadow-2xl z-[70] flex flex-col"
           >
             {/* Header */}
             <div className="p-8 flex items-center justify-between border-b border-zinc-900">
               <div>
-                <h2 className="text-xl font-light text-zinc-100">Documents</h2>
+                <h2 className="text-lg sm:text-xl font-light text-zinc-100">Documents</h2>
                 <p className="text-xs text-zinc-500 mt-1">Manage your context sources</p>
               </div>
               <button
@@ -99,7 +99,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
                         className="flex items-center gap-3 p-3 rounded-lg border border-zinc-800/50 bg-zinc-900/30 hover:border-zinc-700 transition-colors"
                       >
                         <FileText size={16} className="text-teal-500/70" />
-                        <span className="text-sm text-zinc-300 truncate flex-1">{file}</span>
+                        <span className="text-xs sm:text-sm text-zinc-300 truncate flex-1">{file}</span>
                         <CheckCircle2 size={14} className="text-emerald-500/50" />
                       </motion.div>
                     ))}

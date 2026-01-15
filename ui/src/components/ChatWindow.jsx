@@ -27,6 +27,12 @@ const ChatWindow = () => {
         const userMessage = text;
         setInput('');
         setMessages(prev => [...prev, { role: 'user', content: userMessage }]);
+        
+        // Reset height
+        if (inputRef.current) {
+            inputRef.current.style.height = 'auto';
+        }
+
         setIsLoading(true);
 
         try {
@@ -59,10 +65,10 @@ const ChatWindow = () => {
                         className="h-full flex flex-col items-center justify-center text-center space-y-8 pb-20"
                     >
                         <div className="space-y-4 max-w-lg">
-                            <h1 className="text-4xl md:text-5xl font-light tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-zinc-100 to-zinc-500">
+                            <h1 className="text-2xl sm:text-3xl md:text-5xl font-light tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-zinc-100 to-zinc-500">
                                 How can I help?
                             </h1>
-                            <p className="text-zinc-500 text-lg font-light">
+                            <p className="text-zinc-500 text-sm sm:text-base md:text-lg font-light">
                                 Upload documents to give me context, then ask away.
                             </p>
                         </div>
@@ -73,7 +79,7 @@ const ChatWindow = () => {
                                 <button
                                     key={q}
                                     onClick={() => handleSend(q)}
-                                    className="p-4 rounded-xl border border-zinc-800 hover:border-zinc-700 bg-zinc-900/30 hover:bg-zinc-900/50 text-left text-zinc-400 hover:text-zinc-200 transition-all text-sm"
+                                    className="p-4 rounded-xl border border-zinc-800 hover:border-zinc-700 bg-zinc-900/30 hover:bg-zinc-900/50 text-left text-zinc-400 hover:text-zinc-200 transition-all text-xs sm:text-sm"
                                 >
                                     {q}
                                 </button>
@@ -101,7 +107,7 @@ const ChatWindow = () => {
 
                             {/* Content */}
                             <div className={clsx(
-                                "px-6 py-4 rounded-2xl text-[15px] leading-7 md:text-base",
+                                "px-6 py-4 rounded-2xl text-sm sm:text-[15px] leading-7 md:text-base",
                                 msg.role === 'assistant'
                                     ? "bg-transparent text-zinc-300 -ml-6" // Minimal "No bubble" look for AI
                                     : "bg-zinc-800 text-zinc-100 rounded-br-sm" // Subtle bubble for user
@@ -126,26 +132,36 @@ const ChatWindow = () => {
             </div>
 
             {/* Input Area (Floating Pill) */}
-            <div className="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-zinc-950 via-zinc-950/80 to-transparent z-20">
+            <div className="absolute bottom-0 left-0 w-full p-4 md:p-6 bg-gradient-to-t from-zinc-950 via-zinc-950/80 to-transparent z-20">
                 <div className="max-w-3xl mx-auto relative group">
-                    <div className="absolute -inset-0.5 bg-gradient-to-r from-teal-500/20 to-indigo-500/20 rounded-full blur opacity-50 group-hover:opacity-100 transition duration-700"></div>
+                    <div className="absolute -inset-0.5 bg-gradient-to-r from-teal-500/20 to-indigo-500/20 rounded-3xl blur opacity-50 group-hover:opacity-100 transition duration-700"></div>
                     <form
                         onSubmit={(e) => { e.preventDefault(); handleSend(); }}
-                        className="relative flex items-center bg-zinc-900/90 backdrop-blur-xl rounded-full border border-zinc-800 shadow-2xl overflow-hidden focus-within:border-zinc-700 transition-all p-2"
+                        className="relative flex items-end bg-zinc-900/90 backdrop-blur-xl rounded-3xl border border-zinc-800 shadow-2xl overflow-hidden focus-within:border-zinc-700 transition-all p-2"
                     >
-                        <input
+                        <textarea
                             ref={inputRef}
-                            type="text"
                             value={input}
-                            onChange={(e) => setInput(e.target.value)}
+                            onChange={(e) => {
+                                setInput(e.target.value);
+                                e.target.style.height = 'auto';
+                                e.target.style.height = `${Math.min(e.target.scrollHeight, 120)}px`;
+                            }}
+                            onKeyDown={(e) => {
+                                if (e.key === 'Enter' && !e.shiftKey) {
+                                    e.preventDefault();
+                                    handleSend();
+                                }
+                            }}
                             placeholder="Ask a question..."
-                            className="w-full bg-transparent pl-6 pr-4 py-3 text-zinc-100 placeholder-zinc-600 focus:outline-none text-base font-light"
+                            rows={1}
+                            className="w-full bg-transparent pl-6 pr-4 py-3 text-zinc-100 placeholder-zinc-600 focus:outline-none text-sm md:text-base font-light resize-none max-h-[120px]"
                             disabled={isLoading}
                         />
                         <button
                             type="submit"
                             disabled={!input.trim() || isLoading}
-                            className="p-3 rounded-full bg-zinc-100 text-zinc-900 hover:bg-zinc-300 disabled:opacity-50 disabled:hover:bg-zinc-100 transition-all shadow-lg"
+                            className="p-3 mb-0.5 rounded-full bg-zinc-100 text-zinc-900 hover:bg-zinc-300 disabled:opacity-50 disabled:hover:bg-zinc-100 transition-all shadow-lg shrink-0"
                         >
                             {isLoading ? <span className="block w-4 h-4 border-2 border-zinc-900 border-t-transparent rounded-full animate-spin" /> : <ArrowUp size={20} />}
                         </button>

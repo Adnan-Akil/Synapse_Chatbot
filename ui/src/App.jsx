@@ -8,7 +8,7 @@ function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
-    <div className="flex h-screen w-full overflow-hidden bg-zinc-950 text-zinc-100 font-sans selection:bg-teal-500/30">
+    <div className="flex h-[100dvh] w-full overflow-hidden bg-zinc-950 text-zinc-100 font-sans selection:bg-teal-500/30">
 
       {/* Subtle Background Ambience (Alive & Flowing) */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
@@ -66,10 +66,12 @@ function App() {
       </header>
 
       {/* Main Content */}
+      {/* Main Content */}
       <div className="relative z-10 flex w-full h-full">
-        <Sidebar isOpen={isSidebarOpen} toggleSidebar={() => setIsSidebarOpen(false)} />
         <ChatWindow isSidebarOpen={isSidebarOpen} />
       </div>
+
+      <Sidebar isOpen={isSidebarOpen} toggleSidebar={() => setIsSidebarOpen(false)} />
 
     </div>
   );
