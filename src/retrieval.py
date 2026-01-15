@@ -7,6 +7,8 @@ from langchain_community.cross_encoders import HuggingFaceCrossEncoder
 from langchain_community.vectorstores import Chroma
 from langchain_groq import ChatGroq
 from langchain_huggingface import HuggingFaceEmbeddings
+from typing import List
+from langchain_core.documents import Document
 
 
 
@@ -23,8 +25,6 @@ encoder_model = HuggingFaceCrossEncoder(
 reranker = CrossEncoderReranker(model=encoder_model, top_n=15)
 
 
-from typing import List
-from langchain_core.documents import Document
 
 def retrieve_similar_docs(user_query_text: str) -> List[Document]:
     """Retrieve and rerank similar documents based on the user query"""

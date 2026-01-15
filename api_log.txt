@@ -1,0 +1,55 @@
+/home/adnan-akil/Desktop/RAG_Chatbot/src/retrieval.py:18: LangChainDeprecationWarning: The class `Chroma` was deprecated in LangChain 0.2.9 and will be removed in 1.0. An updated version of the class exists in the `langchain-chroma package and should be used instead. To use it run `pip install -U `langchain-chroma` and import as `from `langchain_chroma import Chroma``.
+  vectordb = Chroma(persist_directory=None, embedding_function=embedding_model)
+INFO:     Started server process [42328]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:41282 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45370 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49382 - "POST /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60244 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43948 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38014 - "OPTIONS /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38014 - "POST /chat HTTP/1.1" 200 OK
+.pdf
+INFO:     127.0.0.1:54896 - "POST /upload HTTP/1.1" 200 OK
+.pdf
+INFO:     127.0.0.1:54896 - "POST /upload HTTP/1.1" 200 OK
+.pdf
+INFO:     127.0.0.1:54896 - "POST /upload HTTP/1.1" 200 OK
+.pdf
+INFO:     127.0.0.1:54896 - "POST /upload HTTP/1.1" 200 OK
+.pdf
+INFO:     127.0.0.1:54896 - "POST /upload HTTP/1.1" 200 OK
+.pdf
+INFO:     127.0.0.1:54896 - "POST /upload HTTP/1.1" 200 OK
+.pdf
+INFO:     127.0.0.1:54896 - "POST /upload HTTP/1.1" 200 OK
+.pdf
+INFO:     127.0.0.1:54896 - "POST /upload HTTP/1.1" 200 OK
+.pdf
+INFO:     127.0.0.1:54896 - "POST /upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50218 - "POST /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36010 - "POST /chat HTTP/1.1" 200 OK
+.pdf
+INFO:     127.0.0.1:47210 - "POST /upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60966 - "OPTIONS /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60966 - "POST /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52790 - "POST /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47790 - "OPTIONS /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47804 - "POST /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55954 - "POST /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53702 - "POST /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33776 - "POST /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44154 - "POST /chat HTTP/1.1" 200 OK
+.pdf
+INFO:     127.0.0.1:50494 - "POST /upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48794 - "POST /chat HTTP/1.1" 200 OK
+.pdf
+INFO:     127.0.0.1:45254 - "POST /upload HTTP/1.1" 200 OK
+.pdf
+INFO:     127.0.0.1:45254 - "POST /upload HTTP/1.1" 200 OK
+.pdf
+INFO:     127.0.0.1:45254 - "POST /upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45254 - "OPTIONS /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45254 - "POST /chat HTTP/1.1" 200 OK
